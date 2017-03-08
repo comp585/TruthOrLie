@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text as RNText } from 'react-native';
 import { Container, Content, Button, Text, Card, CardItem, Body, Footer, FooterTab } from 'native-base';
 
 class QuestionScreen extends Component {
@@ -15,7 +15,7 @@ class QuestionScreen extends Component {
 
   constructor(props) {
     super(props);
-    const index = Math.floor(Math.random() * (props.questions.length)) + 1;
+    const index = Math.floor(Math.random() * (props.questions.length));
     this.state = {
       index,
     };
@@ -31,9 +31,9 @@ class QuestionScreen extends Component {
               onPress={() => this.showSelection(this.props.questions[this.state.index])}
             >
               <Body>
-                <Text>
+                <RNText style={{ fontSize: 24 }}>
                   {this.props.questions[this.state.index]}
-                </Text>
+                </RNText>
               </Body>
             </CardItem>
           </Card>
