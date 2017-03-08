@@ -6,18 +6,12 @@ class TimerScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timeLeft: 60,
+      timeLeft: 0,
     };
   }
 
   componentDidMount() {
     this.interval = setInterval(() => this.tick(), 1000);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.timeLeft === 1) {
-      this.evaluate();
-    }
   }
 
   componentWillUnmount() {
@@ -26,7 +20,7 @@ class TimerScreen extends Component {
 
   tick() {
     this.setState((prevState) => ({
-      timeLeft: prevState.timeLeft - 1,
+      timeLeft: prevState.timeLeft + 1,
     }));
   }
 

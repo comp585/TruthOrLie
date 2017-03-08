@@ -15,7 +15,7 @@ class QuestionScreen extends Component {
 
   constructor(props) {
     super(props);
-    const index = Math.floor(Math.random() * (props.questions.length + 1));
+    const index = Math.floor(Math.random() * (props.questions.length)) + 1;
     this.state = {
       index,
     };
