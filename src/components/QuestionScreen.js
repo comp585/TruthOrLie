@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Content, Button, Text, Card, CardItem, Body } from 'native-base';
+import { View } from 'react-native';
+import { Container, Content, Button, Text, Card, CardItem, Body, Footer, FooterTab } from 'native-base';
 
 class QuestionScreen extends Component {
   showSelection(question) {
@@ -12,29 +13,40 @@ class QuestionScreen extends Component {
     });
   }
 
+  constructor(props) {
+    super(props);
+    const index = Math.floor(Math.random() * (props.questions.length + 1));
+    this.state = {
+      index,
+    };
+  }
+
   render() {
     return (
       <Container>
-        <Content>
-            {this.props.questions.map((question) => {
-              return (
-                <Card
-                  key={question}
-                >
-                  <CardItem
-                    button
-                    onPress={() => this.showSelection(question)}
-                  >
-                    <Body>
-                      <Text>
-                        {question}
-                      </Text>
-                    </Body>
-                  </CardItem>
-                </Card>
-              );
-            })}
-        </Content>
+        <View style={{ flex: 1 }}>
+          <Card>
+            <CardItem
+              button
+              onPress={() => this.showSelection(this.props.questions[this.state.index])}
+            >
+              <Body>
+                <Text>
+                  {this.props.questions[this.state.index]}
+                </Text>
+              </Body>
+            </CardItem>
+          </Card>
+          <Footer>
+            <FooterTab>
+              <Button onPress={() => this.showSelection(this.props.questions[this.state.index])}>
+                <Text>
+                  Proceed
+                </Text>
+              </Button>
+            </FooterTab>
+          </Footer>
+        </View>
       </Container>
     );
   }
