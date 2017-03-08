@@ -26,6 +26,7 @@ class TimerScreen extends Component {
 
   tick() {
     this.setState((prevState) => ({
+      //Iterate up by one to cause timer to be more of a stopwatch. Keep track of convo length
       timeLeft: prevState.timeLeft - 1,
     }));
   }
